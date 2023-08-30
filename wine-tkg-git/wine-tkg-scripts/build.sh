@@ -128,6 +128,7 @@ _build_serial() {
   if [ "$_NOLIB32" != "true" ] && [ "$_NOLIB32" != "wow64" ]; then
     # build wine 32-bit
     # nomakepkg
+    export CROSSCFLAGS+=' -mincoming-stack-boundary=2'
     if [ "$_nomakepkg_midbuild_prompt" = "true" ]; then
       msg2 '64-bit side has been built, 32-bit will follow.'
       msg2 'This is the time to install the 32-bit devel packages you might need.'
